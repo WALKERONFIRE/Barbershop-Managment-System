@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model DashboardViewModel
+<link rel="stylesheet" href="~/css/dashboard.css" />
+
+<div class="container d-flex flex-column align-items-center justify-content-center">
+    <div class="row">
+        <ul class="d-flex align-items-center justify-content-center">
+            <li>
+                <a class="sidebarText blueBtn" asp-area="" asp-controller="Admin" asp-action="Dashboard">Dashboard</a>
+            </li>
+            <li>|</li>
+            <li>
+                <a class="sidebarText blueBtn" asp-area="" asp-controller="Admin" asp-action="UserInfo">Users Info</a>
+            </li>
+            <li>|</li>
+            <li>
+                <a class="sidebarText blueBtn" asp-area="" asp-controller="Admin" asp-action="AppointmentInfo">Appointments Info</a>
+            </li>
+            <li>|</li>
+            <li>
+                <a class="sidebarText blueBtn" asp-area="" asp-controller="Admin" asp-action="ServiceInfo">Services Info</a>
+            </li>
+        </ul>
+    </div>
+    <hr />
+    <div class="image-row">
+        <h1>Dashboard</h1>
+        <div class="row">
+            <div class="col cards">
+                <div class="content">
+                    <img src="~/image/dashboard/barber.png" />
+                    <div>
+                        <h1>@Model.ServiceCount</h1>
+                        <h4>Total Services</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col cards">
+                <div class="content">
+                    <img src="~/image/dashboard/image-gallery.png" />
+                    <div>
+                        <h1>@Model.BarberCount</h1>
+                        <h4>Total Stylists</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="col cards">
+                <div class="content">
+                    <img src="~/image/dashboard/inventory.png" />
+                    <div>
+                        <h1>@Model.UserCount</h1>
+                        <h4>Total Customers</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

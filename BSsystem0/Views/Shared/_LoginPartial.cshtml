@@ -1,0 +1,52 @@
+﻿@using BSsystem0.Data;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@*<ul class="navbar-nav">*@
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+    </li>
+    <li class="nav-item">
+        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button  type="submit" class="nav-link btn btn-link text-dark redBtn">Logout</button>
+        </form>
+    </li>
+}
+@*else if(SignInManager.IsSignedIn(contenxt of admin))
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+    </li>
+    <li class="nav-item">
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit" class="nav-link btn btn-link text-dark redBtn">Logout</button>
+        </form>
+    </li>
+}*@
+else
+{
+<li class="nav-item">
+    @*<a class="nav-link text-dark blueBtn" asp-area="Identity" asp-page="/Account/Login">Login</a>*@
+        <a class="nav-link text-dark" asp-controller="Home" asp-action="ChooseUser">Login</a>
+</li>
+}
+</ul>
+<script>
+    // Get the current page URL
+    var url = window.location.href;
+
+    // Get the nav links and loop through them
+    var navLinks = document.querySelectorAll(".navbar-nav a");
+    for (var i = 0; i < navLinks.length; i++) {
+        var link = navLinks[i];
+        // If the link URL matches the current page URL
+        if (url == link.href) {
+            // Add the "blueBtn" class to the parent nav-item element
+            link.closest(".nav-item").classList.add("activeNavItem");
+        }
+    }
+
+</script>

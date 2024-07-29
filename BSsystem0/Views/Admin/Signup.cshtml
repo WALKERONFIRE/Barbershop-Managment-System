@@ -1,0 +1,43 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<link rel="stylesheet" href="~/css/login.css" />
+
+<div class="container loginPage">
+    @*section1*@
+    <div class="section  d-flex flex-column justify-content-center align-items-center">
+        <div class="content">
+            <div class="row">
+                <div class="col">
+                    <img src="~/image/vectorfinal5.png" />
+                </div>
+                <div class="col">
+                    <form class="login">
+                        <h1>Admin Sign Up</h1>
+                        <div class="login__field">
+                            <input type="text" class="login__input" placeholder="Name">
+                        </div>
+                        <div class="login__field">
+                            <input type="text" class="login__input" placeholder="Username">
+                        </div>
+                        <div class="login__field">
+                            <input type="text" class="login__input" placeholder="Location">
+                        </div>
+                        <div class="login__field">
+                            <input type="text" class="login__input" placeholder="Work Hours">
+                        </div>
+                        <div class="login__field">
+                            <input type="password" class="login__input" placeholder="Password">
+                        </div>
+                        <button class="button login__submit">
+                            <span class="button__text">Register Now</span>
+                        </button>
+                        <a asp-controller="Admin" asp-action="Login" class="registerNow">Already has an Account? Signup Now</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

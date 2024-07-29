@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Add Service";
+}
+
+
+@*<div class="container">*@
+
+
+<div class="container">
+    <h2>Add Service</h2>
+    <form id="addAForm">
+        <div class="form-group">
+            <label for="service_name">Service Name:</label>
+            <input type="text" class="form-control" id="service_name" name="service_name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" wrap="soft" rows="8" cols="80" />
+        </div>
+        <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" class="form-control" id="price" name="price" min="0" required>
+        </div>
+        <div class="form-group">
+            <label for="priceAfterOffer">Price After Offer:</label>
+            <input type="number" class="form-control" id="priceAfterOffer" name="priceAfterOffer"  min="0" required>
+        </div>
+        <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file"  accept="image/*" class="form-control" id="image" name="image" required>
+        </div>
+        <button type="submit" class="btn btn-success">Add Service</button>
+    </form>
+</div>

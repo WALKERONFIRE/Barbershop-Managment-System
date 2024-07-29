@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Appointment>
+<link rel="stylesheet" href="~/css/tables.css" asp-append-version="true" />
+<div class="container">
+    @*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    *@
+    @{
+        ViewBag.Title = "Appointment Info";
+    }
+
+  
+    <h2>Appointment Info</h2>
+    <form asp-controller="Admin" asp-action="AppointmentInfo">
+    <table class="table">
+        <thead>
+            <tr>
+               
+                <th>Date Created</th>
+               @* <th>UserID</th>*@
+                <th>ServiceID</th>
+                <th>Barber</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model)
+            {
+                    
+               
+            <tr>
+               
+                <td>@item.DateCreated</td>
+               @* <td>@item.UserId</td>*@
+                <td>@item.Service.Name</td>
+                <td>@item.Barber.Name</td>
+                <td>
+                            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    </td>
+                        <td>
+                            <a class="btn btn-danger" asp-area="" asp-controller="Admin" asp-action="ADelete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+            </tr>
+                }
+          
+        </tbody>
+    </table>
+    </form>
+    <a class="btn btn-primary" asp-area="" asp-controller="Admin" asp-action="AppointmentAdd">Add Row</a>
+    <a class="btn btn-danger" asp-area="" asp-controller="Admin" asp-action="AppointmentDelete">Delete Row</a>
+
+    <script>
+        $(document).ready(function () {
+            $("button.btn-primary").click(function () {
+                $("table tbody").append("<tr><td>New Employee</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>");
+            });
+            $("button.btn-danger").click(function () {
+                $("table tbody tr:last").remove();
+            });
+        });
+    </script>
+</div>
+
+@*<script src="~/js/tables.js" asp-append-version="true"></script>*@

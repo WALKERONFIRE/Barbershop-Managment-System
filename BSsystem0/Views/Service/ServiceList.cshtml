@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Booking";
+}
+@model IEnumerable<BSsystem0.Models.Service>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Services</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        .service-card {
+            margin-bottom: 20px;
+        }
+
+            .service-card img {
+                height: 150px;
+                object-fit: cover;
+            }
+
+            .service-card .card-body {
+                padding: 15px;
+            }
+
+            .service-card .card-title {
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .service-card .card-text {
+                margin-bottom: 10px;
+            }
+
+            .service-card .shop-name {
+                font-weight: bold;
+            }
+    </style>
+</head>
+<body>
+    <form asp-controller="Service" asp-action="OneService" method="post">
+    <div class="container">
+        <h1>Services</h1>
+        <div class="row">
+            @{
+                foreach (var item in Model)
+                {
+                    <div class="col-md-4">
+                        <div class="card service-card">
+                             @if(item.Image != null) {
+                                <img class="card-img-top" src="~/image/@item.Image" alt="ServiceImage">
+                             } else {
+                                <img class="card-img-top" src="~/image/vector3.jpg" alt="ServiceImage">
+                             }
+                               
+                            <div class="card-body">
+                                <h5 class="card-title"> @item.Name </h5>
+                                    <p class="card-text">@item.Price</p>
+                             <p class="card-text shop-name"></p>
+                                    <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.Id">View Service</a>
+                               
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    </form>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

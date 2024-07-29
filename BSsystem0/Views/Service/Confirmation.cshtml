@@ -1,0 +1,95 @@
+﻿@model Appointment
+<link rel="stylesheet" href="~/css/Confirmation.css" />
+@{
+}
+@*section1*@
+<div class="border">
+    <main>
+        <div class="title-text-container">
+            <p class="bold-text">
+             @*   <font size="+4"> Sucessful Operation! </font>*@
+            </p>
+        <p1>Sucessful Operation!</p1>
+        <div class="title-text-container">
+            <p class="bold-text">
+                <font size="+2"> Book Details </font>
+            </p>
+
+
+            <div class="col">
+                <div class="container">
+                 @if(@Model.Service.Image != null) {
+                        <img class="barber-pic" src="~/image/@Model.Service.Image" alt="ServiceImage">
+                            } 
+                     else {
+                        <img class="barber-pic" src="~/image/vector3.jpg" alt="ServiceImage">
+                             }
+                    <div class="text-container">
+                        <p class="bold-text">
+                            4 Services - Haircut/Shave/ Beard Trim/Head
+                            Massage/  Tan Pack/ Hair
+                        </p>
+                        <br /> 
+                        <br />
+                        <div class="text-container-a">
+                            <p class="bold-text">
+                                Service Descreption:
+                            </p>
+                            <p class="paragraph">@Model.Service.Description</p>
+                            <p class="bold-text">
+                                Price: @Model.Service.Price
+                            </p>
+                            <p class="bold-text">
+                                    Price after Sale: @Model.Service.PriceAfterOffer
+                            </p>
+                          @*  <button class="button">View Product</button>*@
+
+                            <button class="button-a">Checkout</button>
+                        </div>
+                        <div class="text-container-b">
+                            <p class="bold-text">
+
+                                Selected stylist: @Model.Barber.Name <br>
+                                Selected Date And Time  : @Model.DateCreated.ToString("dd-MM-yyyy HH:mm")<br>
+                              
+                            </p>
+
+                            <button id="checkoutButton" class="button-a">Checkout</button>
+                            <div id="overlay" class="overlay">
+
+                                <div class="popup">
+
+                                    <img class="Checkout-pic" src="~/image/giphy.gif" />
+
+                                    <p> <font size="+3"> Successful Checkout</font> </p>
+
+                                    <div class="button-close">
+                                            <button id="closeButton" class="button-close"><a asp-controller="Home" asp-action="Index">Return to HomePage </a></button>
+                                    </div>
+
+
+                                </div>
+
+
+                                <script>
+                                    const checkoutButton = document.getElementById('checkoutButton');
+                                    const overlay = document.getElementById('overlay');
+                                    const closeButton = document.getElementById('closeButton');
+
+                                    checkoutButton.addEventListener('click', function () {
+                                        overlay.style.display = 'block';
+                                    });
+
+                                    closeButton.addEventListener('click', function () {
+                                        overlay.style.display = 'none';
+                                    });
+                                </script>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+    </main>
+
+</div>

@@ -1,0 +1,63 @@
+﻿@model AddAppointmentVM
+@{
+    ViewData["Title"] = "Checkout";
+}
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <form asp-action="FinalAdd" method="post">
+
+            <input asp-for="ServiceId" type="hidden" value="@Model.ss.Id" />
+            <label asp-for="ShopId">Select Your BarberShop</label>
+            <select class="form-select" asp-for="ShopId" asp-items="@(new SelectList(Model.Shops , "Id" , "name"))">
+                <option></option>
+            </select>
+            <label asp-for="BarberId">Select Your Barber</label>
+            <select class="form-select" asp-for="BarberId" asp-items="@(new SelectList(Model.Barbers , "Id" , "Name"))">
+                <option></option>
+            </select>
+            <div class="form-group">
+                <label asp-for="DateCreated" class="control-label"></label>
+                <input asp-for="DateCreated" class="form-control" />
+                <span asp-validation-for="DateCreated" class="text-danger"></span>
+            </div>
+
+            <button class="btn-primary" type="submit"> Goooooooooooooooooo </button>
+
+        </form>
+        }
+        
+         else
+    {
+        <p>Please sign in to access the checkout page.</p>
+    }
+    }
+    @section Scripts {
+    <script>
+        $(document).ready(function(){
+
+        $('#ShopId').on('change', function() {
+                var shopId = $(this).val();
+                var barberId = $('#BarberId');
+
+                barberId.empty();
+                barberId.append('<option></option');
+
+                if (shopId !==''){
+                 $.ajax({
+                    url: '/Service/GetBarbers?shopId=' + shopId,
+                    success: function(barbers){
+                      $.each(barbers, function(i, barber){
+                       barberId.append($('<option></option').attr('value',barber.id).text(barber.name));
+                      });
+                    },
+                    error: function(){
+                    alert('Something went wrong!');
+                    }
+                }); 
+                }
+               
+            });
+        });
+    </script>
+}
